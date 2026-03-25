@@ -7,10 +7,10 @@
   <meta name="description" content="Filippo Russo Catering - Dinner Abend, catering privato, scuola di cucina e Kaviar Air.">
   <style>
     :root{
-      --bg:#f4ede3;
-      --bg-soft:#efe4d4;
-      --panel:#fffaf3;
-      --panel-2:#f8f0e5;
+      --bg:#f6efe6;
+      --bg-soft:#ecdfcf;
+      --panel:#fffaf4;
+      --panel-2:#f7eee3;
       --line:#dcc8b1;
       --text:#2e241c;
       --muted:#786556;
@@ -36,7 +36,7 @@
     .topbar{
       position:sticky; top:0; z-index:99;
       backdrop-filter: blur(14px);
-      background:rgba(247,241,232,.78);
+      background:rgba(247,241,232,.84);
       border-bottom:1px solid rgba(109,82,59,.08);
     }
     .topbar .wrap{
@@ -44,16 +44,10 @@
       padding:14px 0; gap:14px;
     }
     .brand{
-      display:flex; align-items:center; gap:12px;
-      font-weight:800; letter-spacing:.04em; color:var(--accent-dark);
+      display:flex; align-items:center; gap:14px;
+      color:var(--accent-dark);
     }
-    .mark{
-      width:42px; height:42px; border-radius:50%;
-      display:grid; place-items:center;
-      background:linear-gradient(135deg, #fff, #ecdcc8);
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-    }
+    .brand img{width:180px; height:auto}
     .lang{
       display:flex; gap:8px; background:rgba(255,255,255,.65);
       padding:6px; border-radius:999px; border:1px solid var(--line);
@@ -62,16 +56,10 @@
       border:none; background:transparent; color:var(--muted);
       padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:700;
     }
-    .lang button.active{
-      background:var(--accent-dark); color:#fff;
-    }
+    .lang button.active{ background:var(--accent-dark); color:#fff; }
 
-    .hero{
-      padding:30px 0 18px;
-    }
-    .hero-grid{
-      display:grid; grid-template-columns:1.05fr .95fr; gap:22px; align-items:stretch;
-    }
+    .hero{ padding:28px 0 16px; }
+    .hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:22px; align-items:stretch; }
     .hero-copy,.panel{
       background:linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.52));
       border:1px solid rgba(109,82,59,.10);
@@ -79,118 +67,72 @@
       border-radius:32px;
     }
     .hero-copy{
-      padding:34px;
-      display:flex; flex-direction:column; justify-content:center;
-      min-height:580px;
-      position:relative; overflow:hidden;
+      padding:34px; display:flex; flex-direction:column; justify-content:center;
+      min-height:580px; position:relative; overflow:hidden;
     }
     .hero-copy::after{
-      content:"";
-      position:absolute; width:280px; height:280px;
-      right:-80px; bottom:-80px; border-radius:50%;
+      content:""; position:absolute; width:280px; height:280px; right:-80px; bottom:-80px; border-radius:50%;
       background:radial-gradient(circle, rgba(134,102,74,.12), transparent 62%);
     }
     .eyebrow{
       display:inline-flex; width:max-content;
-      padding:8px 14px; border-radius:999px;
-      background:rgba(134,102,74,.08);
-      color:var(--accent-dark); border:1px solid var(--line);
-      font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
-      margin-bottom:18px;
+      padding:8px 14px; border-radius:999px; background:rgba(134,102,74,.08);
+      color:var(--accent-dark); border:1px solid var(--line); font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:18px;
     }
     h1{
-      margin:0 0 16px;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(2.8rem, 6vw, 5rem);
-      line-height:.95; letter-spacing:-.03em;
-      color:var(--accent-dark);
+      margin:0 0 16px; font-family:Georgia, "Times New Roman", serif; font-size:clamp(2.8rem, 6vw, 5rem);
+      line-height:.95; letter-spacing:-.03em; color:var(--accent-dark);
     }
-    .sub{
-      font-size:1.08rem; line-height:1.7; color:var(--muted); max-width:620px;
-      margin-bottom:22px;
-    }
+    .sub{ font-size:1.08rem; line-height:1.7; color:var(--muted); max-width:620px; margin-bottom:22px; }
     .actions{display:flex; flex-wrap:wrap; gap:12px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:14px 20px; border-radius:999px; font-weight:800; transition:.25s ease;
-      border:1px solid var(--line);
+      padding:14px 20px; border-radius:999px; font-weight:800; transition:.25s ease; border:1px solid var(--line);
     }
     .btn.primary{background:var(--accent-dark); color:#fff}
     .btn.secondary{background:#fff}
-    .btn:hover{transform:translateY(-1px)}
-    .hero-side{
-      display:grid; grid-template-rows:1.1fr .9fr; gap:18px;
-    }
-    .hero-photo,.card{
-      overflow:hidden; border-radius:32px; box-shadow:var(--shadow);
-      border:1px solid rgba(109,82,59,.10);
-    }
+    .hero-side{ display:grid; grid-template-rows:1.1fr .9fr; gap:18px; }
+    .hero-photo,.card{ overflow:hidden; border-radius:32px; box-shadow:var(--shadow); border:1px solid rgba(109,82,59,.10); }
     .hero-photo img{width:100%; height:100%; object-fit:cover}
-    .card{
-      padding:22px;
-      background:linear-gradient(180deg, #fffaf4, #f7ede2);
-    }
-    .card h3{
-      margin:0 0 14px; color:var(--accent-dark);
-      text-transform:uppercase; font-size:1rem; letter-spacing:.05em;
-    }
+    .card{ padding:22px; background:linear-gradient(180deg, #fffaf4, #f7ede2); }
+    .card h3{ margin:0 0 14px; color:var(--accent-dark); text-transform:uppercase; font-size:1rem; letter-spacing:.05em; }
     .date-list{display:grid; gap:10px}
     .date-item{
       display:flex; justify-content:space-between; gap:12px; align-items:center;
-      padding:14px 16px; background:rgba(255,255,255,.72);
-      border:1px solid var(--line); border-radius:18px;
+      padding:14px 16px; background:rgba(255,255,255,.72); border:1px solid var(--line); border-radius:18px;
     }
     .badge{
-      background:rgba(134,102,74,.10); color:var(--accent-dark);
-      border:1px solid rgba(134,102,74,.15);
-      padding:8px 10px; border-radius:999px; font-size:.78rem; font-weight:800;
-      white-space:nowrap;
+      background:rgba(134,102,74,.10); color:var(--accent-dark); border:1px solid rgba(134,102,74,.15);
+      padding:8px 10px; border-radius:999px; font-size:.78rem; font-weight:800; white-space:nowrap;
     }
 
     section{padding:34px 0}
-    .section-head{
-      display:flex; justify-content:space-between; gap:18px; align-items:end;
-      margin-bottom:18px;
-    }
+    .section-head{ display:flex; justify-content:space-between; gap:18px; align-items:end; margin-bottom:18px; }
     .section-head h2{
-      margin:0; font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(2rem, 3.5vw, 3.2rem); color:var(--accent-dark);
+      margin:0; font-family:Georgia, "Times New Roman", serif; font-size:clamp(2rem, 3.5vw, 3.2rem); color:var(--accent-dark);
     }
-    .section-head p{
-      margin:0; color:var(--muted); max-width:620px; line-height:1.7;
-    }
+    .section-head p{ margin:0; color:var(--muted); max-width:620px; line-height:1.7; }
     .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:22px}
     .panel{padding:28px}
-    .portrait{
-      min-height:480px; padding:0; overflow:hidden; position:relative;
-    }
+    .portrait{ min-height:480px; padding:0; overflow:hidden; position:relative; }
     .portrait img{width:100%; height:100%; object-fit:cover}
     .overlay{
-      position:absolute; left:18px; right:18px; bottom:18px;
-      background:rgba(255,250,243,.82);
-      border:1px solid var(--line);
-      border-radius:18px; padding:16px;
-      backdrop-filter: blur(10px);
+      position:absolute; left:18px; right:18px; bottom:18px; background:rgba(255,250,243,.82);
+      border:1px solid var(--line); border-radius:18px; padding:16px; backdrop-filter: blur(10px);
     }
     .overlay strong{display:block; color:var(--accent-dark); margin-bottom:6px}
-    .story{
-      font-size:1.02rem; line-height:1.8; color:#44372c;
-    }
+    .story{ font-size:1.02rem; line-height:1.8; color:#44372c; }
     .story p{margin-top:0}
     .mini-list{display:grid; gap:12px; margin-top:18px}
     .mini{
-      padding:14px 16px; background:var(--panel-2); border-radius:18px;
-      border:1px solid var(--line);
+      padding:14px 16px; background:var(--panel-2); border-radius:18px; border:1px solid var(--line);
     }
     .mini strong{color:var(--accent-dark); display:block; margin-bottom:5px}
 
     .services{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
     .service{
-      padding:22px;
-      background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.45));
-      border:1px solid rgba(109,82,59,.10);
-      border-radius:24px; box-shadow:var(--shadow);
-      min-height:190px;
+      padding:22px; background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.45));
+      border:1px solid rgba(109,82,59,.10); border-radius:24px; box-shadow:var(--shadow); min-height:190px;
     }
     .service h3{margin:10px 0 8px; color:var(--accent-dark)}
     .service p{margin:0; color:var(--muted); line-height:1.7}
@@ -198,66 +140,41 @@
     .poster-grid{display:grid; grid-template-columns:.95fr 1.05fr; gap:22px}
     .poster-box,.poster-info{
       background:linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.5));
-      border:1px solid rgba(109,82,59,.10);
-      border-radius:28px; box-shadow:var(--shadow);
+      border:1px solid rgba(109,82,59,.10); border-radius:28px; box-shadow:var(--shadow);
     }
-    .poster-box{
-      min-height:460px; overflow:hidden; position:relative;
-      display:grid; place-items:center; background:var(--panel);
-    }
+    .poster-box{ min-height:460px; overflow:hidden; display:grid; place-items:center; background:var(--panel); }
     .poster-box img{width:100%; height:100%; object-fit:cover}
-    .poster-placeholder{
-      padding:28px; text-align:center; color:var(--muted);
-    }
-    .poster-placeholder strong{
-      display:block; color:var(--accent-dark); font-size:1.2rem; margin-bottom:8px;
-    }
     .poster-info{padding:28px}
-    .poster-info ul{padding-left:18px; color:#4a3b2f; line-height:1.9; margin:10px 0 0}
-
-    .gallery{
-      display:grid; grid-template-columns:repeat(12,1fr); gap:14px;
+    .poster-info p{color:#4a3b2f; line-height:1.8}
+    .poster-meta{
+      display:grid; gap:12px; margin-top:18px;
     }
+    .poster-meta .mini{background:#fff}
+
+    .gallery{ display:grid; grid-template-columns:repeat(12,1fr); gap:14px; }
     .shot{
-      grid-column:span 4;
-      min-height:280px; overflow:hidden;
-      border-radius:22px; box-shadow:var(--shadow);
-      border:1px solid rgba(109,82,59,.10);
-      position:relative; background:#fff;
+      grid-column:span 4; min-height:280px; overflow:hidden; border-radius:22px; box-shadow:var(--shadow);
+      border:1px solid rgba(109,82,59,.10); position:relative; background:#fff;
     }
     .shot.tall{min-height:420px}
     .shot.wide{grid-column:span 6}
     .shot img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease}
     .shot:hover img{transform:scale(1.04)}
     .cap{
-      position:absolute; left:12px; bottom:12px;
-      background:rgba(255,250,243,.85); color:var(--accent-dark);
-      border:1px solid var(--line); border-radius:999px;
-      padding:8px 12px; font-size:.8rem; font-weight:700;
+      position:absolute; left:12px; bottom:12px; background:rgba(255,250,243,.85); color:var(--accent-dark);
+      border:1px solid var(--line); border-radius:999px; padding:8px 12px; font-size:.8rem; font-weight:700;
     }
 
-    .contact{
-      display:grid; grid-template-columns: .9fr 1.1fr; gap:22px;
-    }
+    .contact{ display:grid; grid-template-columns: .9fr 1.1fr; gap:22px; }
     .contact-card{
-      padding:28px;
-      border-radius:28px; box-shadow:var(--shadow);
-      border:1px solid rgba(109,82,59,.10);
+      padding:28px; border-radius:28px; box-shadow:var(--shadow); border:1px solid rgba(109,82,59,.10);
       background:linear-gradient(180deg, rgba(255,255,255,.74), rgba(255,255,255,.52));
     }
-    .phone{
-      display:inline-flex; margin-top:10px; font-size:1.35rem; font-weight:900;
-      color:var(--accent-dark); word-break:break-word;
-    }
-    .footer{
-      padding:26px 0 52px; color:var(--muted); text-align:center;
-    }
+    .phone{ display:inline-flex; margin-top:10px; font-size:1.35rem; font-weight:900; color:var(--accent-dark); word-break:break-word; }
+    .footer{ padding:26px 0 52px; color:var(--muted); text-align:center; }
     .wa-float{
-      position:fixed; right:18px; bottom:18px; z-index:120;
-      display:flex; align-items:center; gap:10px;
-      background:#25D366; color:#fff; font-weight:800;
-      padding:14px 16px; border-radius:999px;
-      box-shadow:0 16px 35px rgba(37,211,102,.28);
+      position:fixed; right:18px; bottom:18px; z-index:120; display:flex; align-items:center; gap:10px;
+      background:#25D366; color:#fff; font-weight:800; padding:14px 16px; border-radius:999px; box-shadow:0 16px 35px rgba(37,211,102,.28);
     }
 
     [data-lang]{display:none}
@@ -268,8 +185,7 @@
     body.lang-it h2[data-lang="it"], body.lang-de h2[data-lang="de"],
     body.lang-it h3[data-lang="it"], body.lang-de h3[data-lang="de"],
     body.lang-it div[data-lang="it"], body.lang-de div[data-lang="de"],
-    body.lang-it span[data-lang="it"], body.lang-de span[data-lang="de"],
-    body.lang-it small[data-lang="it"], body.lang-de small[data-lang="de"]{display:block}
+    body.lang-it span[data-lang="it"], body.lang-de span[data-lang="de"]{display:block}
     body.lang-it a span[data-lang="it"], body.lang-de a span[data-lang="de"]{display:inline}
 
     @media (max-width:1060px){
@@ -279,6 +195,7 @@
       .shot, .shot.wide{grid-column:auto}
       .shot.tall{min-height:320px}
       .hero-copy{min-height:auto}
+      .brand img{width:150px}
     }
     @media (max-width:680px){
       .services{grid-template-columns:1fr}
@@ -288,6 +205,7 @@
       .topbar .wrap{flex-wrap:wrap; justify-content:center}
       .section-head{flex-direction:column; align-items:start}
       .wa-float{right:12px; bottom:12px}
+      .brand img{width:130px}
     }
   </style>
 </head>
@@ -295,11 +213,7 @@
   <div class="topbar">
     <div class="wrap">
       <div class="brand">
-        <div class="mark">FR</div>
-        <div>
-          Filippo Russo Catering
-          <div style="font-size:12px;color:var(--muted);font-weight:600;">Dinner Abend • Catering • Kochschule • Kaviar Air</div>
-        </div>
+        <img src="logo-filippo-russo.svg" alt="Filippo Russo logo">
       </div>
       <div class="lang">
         <button class="active" onclick="setLang('it', this)">IT</button>
@@ -319,16 +233,16 @@
 
         <p class="sub" data-lang="it">
           Dinner Abend, catering esclusivo, scuola di cucina e innovazione gastronomica.
-          Un sito più moderno, elegante e credibile, pensato per far percepire subito qualità e personalità.
+          Un’immagine più pulita, elegante e professionale, senza testi inutili.
         </p>
         <p class="sub" data-lang="de">
           Dinner Abend, exklusives Catering, Kochschule und gastronomische Innovation.
-          Eine modernere, elegantere und glaubwürdigere Website, die Qualität und Persönlichkeit sofort vermittelt.
+          Ein saubereres, eleganteres und professionelleres Erscheinungsbild – ohne unnötige Texte.
         </p>
 
         <div class="actions">
-          <a class="btn primary" href="#locandina"><span data-lang="it">Vedi la serata</span><span data-lang="de">Abend ansehen</span></a>
-          <a class="btn secondary" href="https://wa.me/491704651044" target="_blank"><span data-lang="it">Scrivi su WhatsApp</span><span data-lang="de">Per WhatsApp schreiben</span></a>
+          <a class="btn primary" href="#locandina"><span data-lang="it">Locandina serata</span><span data-lang="de">Abend-Plakat</span></a>
+          <a class="btn secondary" href="https://wa.me/491704651044" target="_blank"><span data-lang="it">WhatsApp</span><span data-lang="de">WhatsApp</span></a>
         </div>
       </div>
 
@@ -414,21 +328,6 @@
             2023 trat er der Associazione Italiana Cuochi in Deutschland bei und erweiterte seine Kenntnisse durch Fachkurse, darunter auch Molekularküche.
             Daraus entstand auch Kaviar Air: eine automatische Maschine für Sphären, Kaviar, Schäume und molekulare Zubereitungen – ganz ohne Strom.
           </p>
-
-          <div class="mini-list">
-            <div class="mini">
-              <strong data-lang="it">Dal lavoro all’identità</strong>
-              <strong data-lang="de">Von der Arbeit zur Identität</strong>
-              <span data-lang="it">Un percorso completo tra ristorazione, pasta, catering e innovazione.</span>
-              <span data-lang="de">Ein kompletter Weg zwischen Gastronomie, Pasta, Catering und Innovation.</span>
-            </div>
-            <div class="mini">
-              <strong data-lang="it">Dinner Abend</strong>
-              <strong data-lang="de">Dinner Abend</strong>
-              <span data-lang="it">Esperienze private che uniscono cucina, atmosfera e personalità.</span>
-              <span data-lang="de">Private Erlebnisse, die Küche, Atmosphäre und Persönlichkeit verbinden.</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -441,8 +340,8 @@
           <h2 data-lang="it">Servizi</h2>
           <h2 data-lang="de">Leistungen</h2>
         </div>
-        <p data-lang="it">Più chiaro, più vendibile, più professionale: qui il cliente capisce subito cosa offre Filippo Russo.</p>
-        <p data-lang="de">Klarer, verkaufsstärker und professioneller: Hier versteht der Kunde sofort, was Filippo Russo anbietet.</p>
+        <p data-lang="it">Più chiaro, più elegante, più professionale.</p>
+        <p data-lang="de">Klarer, eleganter, professioneller.</p>
       </div>
 
       <div class="services">
@@ -478,36 +377,42 @@
     <div class="wrap">
       <div class="section-head">
         <div>
-          <h2 data-lang="it">Locandina della serata</h2>
+          <h2 data-lang="it">Locandina serata</h2>
           <h2 data-lang="de">Abend-Plakat</h2>
         </div>
-        <p data-lang="it">Se carichi un file chiamato <strong>locandina.jpg</strong> nella stessa cartella di index.html, il sito lo mostra qui in automatico.</p>
-        <p data-lang="de">Wenn Sie eine Datei mit dem Namen <strong>locandina.jpg</strong> in denselben Ordner wie index.html hochladen, wird sie hier automatisch angezeigt.</p>
+        <p data-lang="it">Una sezione pulita dedicata alla promozione della serata.</p>
+        <p data-lang="de">Ein sauberer Bereich zur Bewerbung des Abends.</p>
       </div>
 
       <div class="poster-grid">
         <div class="poster-box">
-          <img src="locandina.jpg" alt="Locandina serata" onerror="this.style.display='none'; document.getElementById('posterPlaceholder').style.display='block';">
-          <div class="poster-placeholder" id="posterPlaceholder">
-            <strong data-lang="it">Spazio pronto per la locandina</strong>
-            <strong data-lang="de">Bereich für das Plakat</strong>
-            <span data-lang="it">Carica <b>locandina.jpg</b> per farla comparire qui.</span>
-            <span data-lang="de">Laden Sie <b>locandina.jpg</b> hoch, damit sie hier erscheint.</span>
-          </div>
+          <img src="locandina.jpg" alt="Locandina serata" onerror="this.src='img4.jpg'">
         </div>
         <div class="poster-info">
-          <h3 data-lang="it" style="margin-top:0;color:var(--accent-dark);font-size:1.5rem;">Una sezione dedicata alla serata</h3>
-          <h3 data-lang="de" style="margin-top:0;color:var(--accent-dark);font-size:1.5rem;">Ein eigener Bereich für den Abend</h3>
-          <ul data-lang="it">
-            <li>Perfetta per promuovere Dinner Abend, corsi o eventi speciali.</li>
-            <li>Puoi cambiare la locandina quando vuoi senza rifare il sito.</li>
-            <li>Basta sostituire il file con lo stesso nome.</li>
-          </ul>
-          <ul data-lang="de">
-            <li>Perfekt für Dinner Abend, Kurse oder besondere Events.</li>
-            <li>Sie können das Plakat jederzeit austauschen, ohne die Website neu zu bauen.</li>
-            <li>Einfach die Datei mit demselben Namen ersetzen.</li>
-          </ul>
+          <h3 data-lang="it" style="margin-top:0;color:var(--accent-dark);font-size:1.5rem;">Dinner Abend</h3>
+          <h3 data-lang="de" style="margin-top:0;color:var(--accent-dark);font-size:1.5rem;">Dinner Abend</h3>
+          <p data-lang="it">
+            Qui puoi mettere la locandina aggiornata della serata. Se non c’è ancora,
+            il sito mostra comunque un’immagine elegante per non lasciare vuoti.
+          </p>
+          <p data-lang="de">
+            Hier kann das aktuelle Plakat des Abends eingefügt werden. Falls es noch nicht vorhanden ist,
+            zeigt die Website trotzdem ein elegantes Bild, damit kein leerer Bereich entsteht.
+          </p>
+          <div class="poster-meta">
+            <div class="mini">
+              <strong data-lang="it">Perfetta per promozione</strong>
+              <strong data-lang="de">Perfekt für Promotion</strong>
+              <span data-lang="it">Dinner Abend, corsi, serate private o eventi speciali.</span>
+              <span data-lang="de">Dinner Abend, Kurse, private Abende oder besondere Events.</span>
+            </div>
+            <div class="mini">
+              <strong data-lang="it">Aggiornabile velocemente</strong>
+              <strong data-lang="de">Schnell austauschbar</strong>
+              <span data-lang="it">Basta sostituire il file locandina.jpg.</span>
+              <span data-lang="de">Einfach die Datei locandina.jpg ersetzen.</span>
+            </div>
+          </div>
           <a class="btn primary" href="https://wa.me/491704651044" target="_blank" style="margin-top:18px;">
             <span data-lang="it">Prenota o chiedi info</span>
             <span data-lang="de">Reservieren oder Infos anfragen</span>
@@ -524,8 +429,8 @@
           <h2 data-lang="it">Gallery</h2>
           <h2 data-lang="de">Galerie</h2>
         </div>
-        <p data-lang="it">Piatti, eventi, backstage e dettagli: qui il sito smette di sembrare basico e inizia a raccontare davvero il progetto.</p>
-        <p data-lang="de">Gerichte, Events, Backstage und Details: Hier wirkt die Website nicht mehr basic, sondern erzählt das Projekt wirklich.</p>
+        <p data-lang="it">Piatti, eventi, backstage e dettagli.</p>
+        <p data-lang="de">Gerichte, Events, Backstage und Details.</p>
       </div>
 
       <div class="gallery">
@@ -556,8 +461,8 @@
           <h2 data-lang="it">Contatti</h2>
           <h2 data-lang="de">Kontakt</h2>
         </div>
-        <p data-lang="it">Qui il tasto WhatsApp è presente davvero: sia in pagina sia fisso in basso a destra.</p>
-        <p data-lang="de">Hier ist der WhatsApp-Button wirklich vorhanden: sowohl auf der Seite als auch fest unten rechts.</p>
+        <p data-lang="it">WhatsApp diretto per prenotazioni e informazioni.</p>
+        <p data-lang="de">Direkt per WhatsApp für Reservierungen und Informationen.</p>
       </div>
 
       <div class="contact">
@@ -576,28 +481,9 @@
         </div>
 
         <div class="contact-card">
-          <h3 data-lang="it" style="margin-top:0;color:var(--accent-dark);font-size:1.4rem;">Cosa è cambiato</h3>
-          <h3 data-lang="de" style="margin-top:0;color:var(--accent-dark);font-size:1.4rem;">Was sich geändert hat</h3>
-          <div class="mini-list">
-            <div class="mini">
-              <strong data-lang="it">Tasto WhatsApp vero</strong>
-              <strong data-lang="de">Echter WhatsApp-Button</strong>
-              <span data-lang="it">Presente sia in alto sia fisso in basso a destra.</span>
-              <span data-lang="de">Sowohl oben als auch fest unten rechts vorhanden.</span>
-            </div>
-            <div class="mini">
-              <strong data-lang="it">Sezione locandina</strong>
-              <strong data-lang="de">Plakat-Bereich</strong>
-              <span data-lang="it">Pronta per promuovere ogni serata senza rifare il sito.</span>
-              <span data-lang="de">Bereit, jeden Abend zu bewerben, ohne die Website neu zu bauen.</span>
-            </div>
-            <div class="mini">
-              <strong data-lang="it">Più premium, meno basic</strong>
-              <strong data-lang="de">Mehr Premium, weniger basic</strong>
-              <span data-lang="it">Hero migliore, blocchi più curati e gallery più forte.</span>
-              <span data-lang="de">Besseres Hero, hochwertigere Blöcke und stärkere Galerie.</span>
-            </div>
-          </div>
+          <img src="logo-filippo-russo.svg" alt="Logo Filippo Russo" style="max-width:320px;margin-bottom:14px;">
+          <p data-lang="it">Ti ho anche preparato un primo logo pulito ed elegante, già dentro al sito.</p>
+          <p data-lang="de">Ich habe auch ein erstes sauberes und elegantes Logo vorbereitet, das bereits in die Website integriert ist.</p>
         </div>
       </div>
     </div>

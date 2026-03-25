@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="220" viewBox="0 0 720 220" fill="none">
+  <rect width="720" height="220" rx="28" fill="#F8F1E7"/>
+  <circle cx="94" cy="110" r="58" stroke="#7A5A40" stroke-width="3"/>
+  <path d="M76 80h39v11H89v22h22v11H89v36H76V80z" fill="#7A5A40"/>
+  <path d="M106 80h20c22 0 35 11 35 29 0 13-7 22-19 27l23 24h-17l-20-21h-9v21h-13V80zm19 48c14 0 22-6 22-17 0-12-8-17-22-17h-6v34h6z" fill="#7A5A40"/>
+  <text x="190" y="98" font-family="Georgia, serif" font-size="44" fill="#7A5A40" letter-spacing="1.5">Filippo Russo</text>
+  <text x="190" y="138" font-family="Arial, sans-serif" font-size="22" fill="#9A7A5E" letter-spacing="6">CATERING</text>
+  <line x1="190" y1="155" x2="520" y2="155" stroke="#D8C7B6" stroke-width="2"/>
+  <text x="190" y="182" font-family="Arial, sans-serif" font-size="14" fill="#8A6A4E" letter-spacing="2">DINNER ABEND • KOCHSCHULE • KAVIAR AIR</text>
+</svg>
