@@ -1,84 +1,698 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Filippo Russo Catering</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filippo Russo Catering</title>
+  <meta name="description" content="Filippo Russo Catering – Dinner Abend, catering privato, eventi ed esperienze gastronomiche." />
+  <style>
+    :root{
+      --bg:#f7f1e8;
+      --bg2:#efe3d2;
+      --panel:#fffaf4;
+      --panel-soft:#f6ece0;
+      --text:#2f241b;
+      --muted:#776353;
+      --line:#deccb8;
+      --accent:#7a5a40;
+      --accent-2:#a37b58;
+      --wa:#25D366;
+      --shadow:0 22px 50px rgba(90,65,41,.12);
+      --radius:28px;
+      --max:1180px;
+    }
 
-<style>
-body{margin:0;font-family:Arial;background:#f5efe6;color:#2f241b}
-.section{padding:70px 20px;text-align:center;max-width:1100px;margin:auto}
-h1,h2{color:#6d523b}
-.hero{height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#eadfce}
-.btn{padding:14px 25px;border-radius:30px;background:#6d523b;color:white;text-decoration:none;margin-top:15px;display:inline-block}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.gallery img{width:100%;border-radius:10px}
-@media(max-width:700px){.gallery{grid-template-columns:1fr}}
-.wa{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:15px 20px;border-radius:30px;text-decoration:none;font-weight:bold}
-</style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(122,90,64,.08), transparent 28%),
+        linear-gradient(180deg,var(--bg) 0%, var(--bg2) 100%);
+    }
+    img{display:block; max-width:100%}
+    a{text-decoration:none; color:inherit}
+    .wrap{width:min(var(--max), calc(100% - 28px)); margin:auto}
 
+    .topbar{
+      position:sticky; top:0; z-index:90;
+      background:rgba(247,241,232,.86);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(122,90,64,.08);
+    }
+    .topbar .wrap{
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      padding:14px 0;
+    }
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--accent);
+      font-size:1.35rem;
+      letter-spacing:.04em;
+      font-weight:700;
+    }
+    .brand small{
+      display:block;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.72rem;
+      color:var(--muted);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-top:3px;
+    }
+    .nav{
+      display:flex; gap:8px; flex-wrap:wrap;
+    }
+    .nav a{
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:.92rem;
+      color:var(--muted);
+      border:1px solid transparent;
+      transition:.2s ease;
+    }
+    .nav a:hover{border-color:var(--line); background:rgba(255,255,255,.45); color:var(--accent)}
+
+    .hero{
+      padding:26px 0 22px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .hero-copy, .hero-photo, .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.76), rgba(255,255,255,.58));
+      border:1px solid rgba(122,90,64,.10);
+      box-shadow:var(--shadow);
+      border-radius:34px;
+    }
+    .hero-copy{
+      padding:36px;
+      min-height:620px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-copy:after{
+      content:"";
+      position:absolute;
+      width:320px; height:320px;
+      right:-100px; bottom:-110px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(122,90,64,.12), transparent 62%);
+    }
+    .kicker{
+      display:inline-flex;
+      width:max-content;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(122,90,64,.07);
+      color:var(--accent);
+      font-size:12px;
+      letter-spacing:.1em;
+      font-weight:800;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+    h1{
+      margin:0 0 16px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(3rem, 6vw, 5.4rem);
+      line-height:.93;
+      letter-spacing:-.04em;
+      color:var(--accent);
+    }
+    .hero-copy p{
+      margin:0;
+      max-width:610px;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:1.05rem;
+    }
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 20px;
+      border-radius:999px;
+      font-weight:800;
+      border:1px solid var(--line);
+      transition:.2s ease;
+    }
+    .btn.primary{
+      background:var(--accent);
+      color:#fff;
+      border-color:var(--accent);
+    }
+    .btn.secondary{
+      background:#fff;
+      color:var(--accent);
+    }
+    .btn:hover{transform:translateY(-1px)}
+
+    .hero-side{
+      display:grid;
+      grid-template-rows:1.08fr .92fr;
+      gap:18px;
+    }
+    .hero-photo{
+      overflow:hidden;
+      min-height:350px;
+    }
+    .hero-photo img{
+      width:100%; height:100%; object-fit:cover;
+    }
+
+    .panel{padding:24px}
+    .panel h3{
+      margin:0 0 14px;
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:.95rem;
+    }
+
+    .dates{
+      display:grid;
+      gap:12px;
+    }
+    .date-card{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:16px 16px;
+      background:rgba(255,255,255,.66);
+      border:1px solid var(--line);
+      border-radius:20px;
+    }
+    .date-card strong{
+      display:block;
+      color:var(--accent);
+      font-size:1.02rem;
+    }
+    .date-card small{color:var(--muted)}
+    .badge{
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.78rem;
+      font-weight:800;
+      background:rgba(122,90,64,.09);
+      color:var(--accent);
+      border:1px solid rgba(122,90,64,.10);
+      white-space:nowrap;
+    }
+
+    section{padding:36px 0}
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:18px;
+      margin-bottom:18px;
+    }
+    .section-head h2{
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(2rem, 4vw, 3.2rem);
+      line-height:1;
+      color:var(--accent);
+    }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      max-width:620px;
+      line-height:1.7;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+    .portrait{
+      min-height:520px;
+      overflow:hidden;
+      padding:0;
+      position:relative;
+    }
+    .portrait img{
+      width:100%; height:100%; object-fit:cover;
+    }
+    .overlay{
+      position:absolute;
+      left:18px; right:18px; bottom:18px;
+      background:rgba(255,250,244,.86);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+      backdrop-filter:blur(12px);
+    }
+    .overlay strong{
+      display:block;
+      color:var(--accent);
+      margin-bottom:6px;
+    }
+
+    .story{
+      line-height:1.8;
+      color:#46382d;
+      font-size:1rem;
+    }
+    .story p{margin-top:0}
+    .mini-list{
+      display:grid; gap:12px; margin-top:18px;
+    }
+    .mini{
+      padding:14px 16px;
+      border-radius:18px;
+      background:var(--panel-soft);
+      border:1px solid var(--line);
+    }
+    .mini strong{
+      display:block;
+      color:var(--accent);
+      margin-bottom:4px;
+    }
+
+    .services{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:16px;
+    }
+    .service{
+      padding:22px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.74), rgba(255,255,255,.52));
+      border:1px solid rgba(122,90,64,.10);
+      box-shadow:var(--shadow);
+      min-height:180px;
+    }
+    .service h3{
+      margin:0 0 8px;
+      color:var(--accent);
+    }
+    .service p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .poster-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:22px;
+    }
+    .poster-box, .poster-info{
+      background:linear-gradient(180deg, rgba(255,255,255,.76), rgba(255,255,255,.58));
+      border:1px solid rgba(122,90,64,.10);
+      box-shadow:var(--shadow);
+      border-radius:30px;
+      overflow:hidden;
+    }
+    .poster-box{
+      min-height:520px;
+    }
+    .poster-box img{
+      width:100%; height:100%; object-fit:cover;
+    }
+    .poster-info{
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .poster-info h3{
+      margin:0 0 12px;
+      color:var(--accent);
+      font-size:1.7rem;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+    .poster-info p{
+      color:var(--muted);
+      line-height:1.8;
+      margin:0 0 18px;
+    }
+    .event-points{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-bottom:20px;
+    }
+    .point{
+      padding:10px 14px;
+      border-radius:999px;
+      background:var(--panel-soft);
+      border:1px solid var(--line);
+      color:var(--accent);
+      font-size:.88rem;
+      font-weight:700;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:14px;
+    }
+    .shot{
+      grid-column:span 4;
+      min-height:280px;
+      border-radius:22px;
+      overflow:hidden;
+      position:relative;
+      background:#fff;
+      border:1px solid rgba(122,90,64,.10);
+      box-shadow:var(--shadow);
+    }
+    .shot.wide{grid-column:span 6}
+    .shot.tall{min-height:420px}
+    .shot img{
+      width:100%; height:100%; object-fit:cover;
+      transition:transform .35s ease;
+    }
+    .shot:hover img{transform:scale(1.04)}
+    .cap{
+      position:absolute;
+      left:12px; bottom:12px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,250,244,.86);
+      border:1px solid var(--line);
+      color:var(--accent);
+      font-size:.82rem;
+      font-weight:700;
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:22px;
+    }
+    .contact-card{
+      padding:28px;
+      border-radius:30px;
+      background:linear-gradient(180deg, rgba(255,255,255,.76), rgba(255,255,255,.58));
+      border:1px solid rgba(122,90,64,.10);
+      box-shadow:var(--shadow);
+    }
+    .phone{
+      display:inline-flex;
+      margin-top:10px;
+      font-size:1.35rem;
+      font-weight:900;
+      color:var(--accent);
+      word-break:break-word;
+    }
+    .contact-card p{
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .footer{
+      padding:26px 0 56px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    .wa-float{
+      position:fixed;
+      right:18px; bottom:18px;
+      z-index:100;
+      background:var(--wa);
+      color:#fff;
+      padding:14px 16px;
+      border-radius:999px;
+      font-weight:800;
+      box-shadow:0 16px 35px rgba(37,211,102,.28);
+    }
+
+    @media (max-width:1060px){
+      .hero-grid,.split,.poster-grid,.contact{grid-template-columns:1fr}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .shot,.shot.wide{grid-column:auto}
+      .shot.tall{min-height:340px}
+      .hero-copy{min-height:auto}
+    }
+    @media (max-width:680px){
+      .nav{justify-content:center}
+      .topbar .wrap{flex-direction:column; align-items:center}
+      .services{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .hero-copy,.hero-photo,.panel,.poster-box,.poster-info,.contact-card{border-radius:24px}
+      .hero-copy{padding:24px}
+      .section-head{flex-direction:column; align-items:start}
+      .wa-float{right:12px; bottom:12px}
+    }
+  </style>
 </head>
-
 <body>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        Filippo Russo
+        <small>Catering • Dinner Abend • Kochschule • Kaviar Air</small>
+      </div>
+      <nav class="nav">
+        <a href="#dinner">Dinner Abend</a>
+        <a href="#storia">Storia</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#locandina">Serata</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+    </div>
+  </div>
 
-<div class="hero">
-<h1>Filippo Russo Catering</h1>
-<p>Esperienze gastronomiche private</p>
-<a class="btn" href="#dinner">Scopri le serate</a>
-</div>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="kicker">Esperienze gastronomiche private</div>
+        <h1>Filippo Russo<br>porta stile, tecnica e identità in ogni evento.</h1>
+        <p>
+          Dinner Abend, catering esclusivo, scuola di cucina e innovazione gastronomica.
+          Un’immagine più elegante, calda e professionale, pensata per dare valore al progetto e far percepire subito qualità.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#locandina">Locandina serata</a>
+          <a class="btn secondary" href="https://wa.me/491704651044" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
 
-<div class="section" id="dinner">
-<h2>Dinner Abend</h2>
-<p>Esperienze gastronomiche private con posti limitati</p>
+      <div class="hero-side">
+        <div class="hero-photo">
+          <img src="img1.jpg" alt="Filippo Russo Catering">
+        </div>
+        <div class="panel" id="dinner">
+          <h3>Dinner Abend</h3>
+          <div class="dates">
+            <div class="date-card">
+              <div>
+                <strong>12 Aprile</strong>
+                <small>Beuren</small>
+              </div>
+              <span class="badge">Sold out</span>
+            </div>
+            <div class="date-card">
+              <div>
+                <strong>26 Aprile</strong>
+                <small>Beuren</small>
+              </div>
+              <span class="badge">Ultimi posti</span>
+            </div>
+            <div class="date-card">
+              <div>
+                <strong>10 Maggio</strong>
+                <small>Beuren</small>
+              </div>
+              <span class="badge">Disponibile</span>
+            </div>
+          </div>
+          <div class="hero-actions" style="margin-top:16px;">
+            <a class="btn primary" href="https://wa.me/491704651044" target="_blank" rel="noopener">Prenota su WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<p><strong>12 Aprile – SOLD OUT</strong></p>
-<p><strong>26 Aprile – Ultimi posti</strong></p>
-<p><strong>10 Maggio – Disponibile</strong></p>
+  <section id="storia">
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2>Chi è Filippo</h2></div>
+        <p>Una storia costruita con lavoro, adattamento, passione e continua evoluzione professionale.</p>
+      </div>
 
-<p>Posti limitati • Esperienza privata • Menu esclusivo</p>
+      <div class="split">
+        <div class="panel portrait">
+          <img src="img11.jpg" alt="Filippo Russo">
+          <div class="overlay">
+            <strong>Profilo professionale</strong>
+            Tradizione, innovazione e una visione imprenditoriale orientata a nuove esperienze gastronomiche.
+          </div>
+        </div>
 
-<a class="btn" href="https://wa.me/491704651044">Prenota su WhatsApp</a>
-</div>
+        <div class="panel story">
+          <p>
+            Dopo gli studi all’Istituto Professionale “Enrico Fermi” di Gela, Filippo Russo si trasferisce in Germania all’età di sedici anni
+            e inizia nel 1987 la propria esperienza nella ristorazione come aiuto cucina. Nel tempo sviluppa competenze trasversali in diversi ruoli,
+            tra cui pizzaiolo, aiuto cuoco, barista e cameriere.
+          </p>
+          <p>
+            Dal 1999 lavora per oltre tredici anni in un pastificio, approfondendo la produzione di pasta fresca, secca e ripiena.
+            Insieme alla moglie Silvia Arena Russo avvia un’attività familiare di catering che, dopo la pandemia, nel 2022 si trasforma
+            in un progetto strutturato con eventi gastronomici privati a Beuren.
+          </p>
+          <p>
+            Nel 2023 entra nell’Associazione Italiana Cuochi in Germania e amplia ulteriormente le proprie competenze con corsi specialistici,
+            tra cui la cucina molecolare. Da questa sinergia nasce anche Kaviar Air: una macchina automatica per la creazione di sfere, caviale,
+            schiume e preparazioni molecolari, funzionante senza energia elettrica.
+          </p>
 
-<div class="section">
-<h2>Chi è Filippo</h2>
-<p>
-Professionista con un percorso costruito tra esperienza, passione e continua evoluzione.
-Dalla ristorazione tradizionale fino alla cucina molecolare, unisce tecnica e creatività.
-</p>
-</div>
+          <div class="mini-list">
+            <div class="mini">
+              <strong>Tradizione + evoluzione</strong>
+              Un percorso completo tra ristorazione, pasta, catering e innovazione.
+            </div>
+            <div class="mini">
+              <strong>Dinner Abend</strong>
+              Esperienze private che uniscono cucina, atmosfera e personalità.
+            </div>
+            <div class="mini">
+              <strong>Kaviar Air</strong>
+              Unione concreta tra creatività culinaria e competenze tecniche.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="section" id="locandina">
-<h2>Serata</h2>
-<img src="locandina.jpg" onerror="this.src='img4.jpg'">
-</div>
+  <section id="servizi">
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2>Servizi</h2></div>
+        <p>Chiaro, elegante, professionale: qui il cliente capisce subito cosa offre Filippo Russo.</p>
+      </div>
 
-<div class="section">
-<h2>Gallery</h2>
-<div class="gallery">
-<img src="img1.jpg">
-<img src="img2.jpg">
-<img src="img3.jpg">
-<img src="img4.jpg">
-<img src="img5.jpg">
-<img src="img6.jpg">
-<img src="img7.jpg">
-<img src="img8.jpg">
-<img src="img9.jpg">
-<img src="img10.jpg">
-<img src="img11.jpg">
-<img src="img12.jpg">
-<img src="img13.jpg">
-<img src="img14.jpg">
-<img src="img15.jpg">
-<img src="img16.jpg">
-<img src="img17.jpg">
-<img src="img18.jpg">
+      <div class="services">
+        <div class="service">
+          <h3>Dinner Abend</h3>
+          <p>Serate esclusive con posti limitati, menu dedicati e atmosfera curata.</p>
+        </div>
+        <div class="service">
+          <h3>Catering privato</h3>
+          <p>Eventi, buffet, feste private e servizi su misura.</p>
+        </div>
+        <div class="service">
+          <h3>Scuola di cucina</h3>
+          <p>Corsi pratici dalla tecnica classica fino alla cucina molecolare.</p>
+        </div>
+        <div class="service">
+          <h3>Kaviar Air</h3>
+          <p>Innovazione tecnica applicata alla creatività gastronomica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
-</div>
+  <section id="locandina">
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2>Serata</h2></div>
+        <p>Una sezione pulita e protagonista, pensata per valorizzare la locandina dell’evento.</p>
+      </div>
 
-<a class="wa" href="https://wa.me/491704651044">WhatsApp</a>
+      <div class="poster-grid">
+        <div class="poster-box">
+          <img src="locandina.jpg" alt="Locandina serata" onerror="this.src='img4.jpg'">
+        </div>
+        <div class="poster-info">
+          <h3>Dinner Abend</h3>
+          <p>
+            Una serata esclusiva pensata per chi cerca qualità, atmosfera e un’esperienza gastronomica curata in ogni dettaglio.
+          </p>
+          <div class="event-points">
+            <span class="point">Posti limitati</span>
+            <span class="point">Esperienza privata</span>
+            <span class="point">Menu esclusivo</span>
+          </div>
+          <a class="btn primary" href="https://wa.me/491704651044" target="_blank" rel="noopener">Prenota o chiedi info</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2>Gallery</h2></div>
+        <p>Piatti, eventi, backstage e dettagli che raccontano meglio il progetto.</p>
+      </div>
+
+      <div class="gallery">
+        <div class="shot tall"><img src="img2.jpg" alt=""><div class="cap">Signature</div></div>
+        <div class="shot"><img src="img3.jpg" alt=""><div class="cap">Dinner</div></div>
+        <div class="shot"><img src="img4.jpg" alt=""><div class="cap">Plating</div></div>
+        <div class="shot wide"><img src="img5.jpg" alt=""><div class="cap">Event</div></div>
+        <div class="shot"><img src="img6.jpg" alt=""><div class="cap">Cuisine</div></div>
+        <div class="shot tall"><img src="img7.jpg" alt=""><div class="cap">Backstage</div></div>
+        <div class="shot"><img src="img8.jpg" alt=""><div class="cap">Chef</div></div>
+        <div class="shot"><img src="img9.jpg" alt=""><div class="cap">Setup</div></div>
+        <div class="shot wide"><img src="img10.jpg" alt=""><div class="cap">Catering</div></div>
+        <div class="shot"><img src="img12.jpg" alt=""><div class="cap">Team</div></div>
+        <div class="shot"><img src="img13.jpg" alt=""><div class="cap">Experience</div></div>
+        <div class="shot tall"><img src="img14.jpg" alt=""><div class="cap">Show</div></div>
+        <div class="shot"><img src="img15.jpg" alt=""><div class="cap">Innovation</div></div>
+        <div class="shot wide"><img src="img16.jpg" alt=""><div class="cap">Details</div></div>
+        <div class="shot"><img src="img17.jpg" alt=""><div class="cap">Mood</div></div>
+        <div class="shot"><img src="img18.jpg" alt=""><div class="cap">Private</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti">
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2>Contatti</h2></div>
+        <p>WhatsApp diretto per prenotazioni e informazioni.</p>
+      </div>
+
+      <div class="contact">
+        <div class="contact-card">
+          <h3 style="margin-top:0;color:var(--accent);font-size:1.6rem;font-family:Georgia, 'Times New Roman', serif;">Prenota o chiedi info</h3>
+          <p>Per Dinner Abend, catering, scuola di cucina o richieste dedicate.</p>
+          <a class="phone" href="https://wa.me/491704651044" target="_blank" rel="noopener">+49 170 4651044</a>
+          <div class="hero-actions" style="margin-top:16px;">
+            <a class="btn primary" href="https://wa.me/491704651044" target="_blank" rel="noopener">Apri WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3 style="margin-top:0;color:var(--accent);font-size:1.6rem;font-family:Georgia, 'Times New Roman', serif;">Filippo Russo Catering</h3>
+          <p>
+            Un’immagine più pulita, calda e credibile, costruita per valorizzare il progetto senza scritte inutili e senza effetto amatoriale.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer wrap">
+    Filippo Russo Catering • Dinner Abend • Scuola di cucina • Kaviar Air
+  </div>
+
+  <a class="wa-float" href="https://wa.me/491704651044" target="_blank" rel="noopener">WhatsApp</a>
 </body>
 </html>
